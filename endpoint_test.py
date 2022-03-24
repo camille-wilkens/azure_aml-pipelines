@@ -13,9 +13,9 @@ allowSelfSignedHttps(True) # this line is needed if you use self-signed certific
 
 # URL for the web service, should be similar to:
 # 'http://8530a665-66f3-49c8-a953-b82a2d312917.eastus.azurecontainer.io/score'
-scoring_uri = ''
+scoring_uri = 'http://0bdf4fd2-9f7b-41cc-bcf8-869a5a570f58.southcentralus.azurecontainer.io/score'
 # If the service is authenticated, set the key or token
-key = ''
+key = 'sxbz2PbvmE3Df9YjSm7haRAWO04SZ20q'
 
 
 
@@ -60,6 +60,12 @@ body = str.encode(json.dumps(data))
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ key)}
 
 req = urllib.request.Request(scoring_uri, body, headers)
+
+# Convert to JSON string
+input_data = json.dumps(data)
+with open("data.json", "w") as _f:
+    _f.write(input_data)
+
 
 try:
     response = urllib.request.urlopen(req)
