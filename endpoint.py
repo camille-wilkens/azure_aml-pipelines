@@ -83,6 +83,12 @@ headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ key)}
 
 req = urllib.request.Request(scoring_uri, body, headers)
 
+# Convert to JSON string
+input_data = json.dumps(data)
+with open("data.json", "w") as _f:
+    _f.write(input_data)
+
+
 try:
     response = urllib.request.urlopen(req)
 
