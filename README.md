@@ -5,7 +5,7 @@
 
 
 ## Architectural Diagram
-
+![az_architecture](az_architecture.PNG.PNG)
 az_architecture.PNG
 
 ### Project Main Steps:
@@ -88,56 +88,56 @@ Now that model is deployed, using the endpoint.py script provided to interact wi
 
 
 * Added two sets of data to score, will return {"result":["yes", "no"]}
-data = {
-    "Inputs": {
-        "data":
-        [
-            {
-                "age": "53",
-                "job": "technician",
-                "marital": "married",
-                "education": "professional.course",
-                "default": "no",
-                "housing": "no",
-                "loan": "yes",
-                "contact": "cellular",
-                "month": "jul",
-                "day_of_week": "tue",
-                "duration": "178",
-                "campaign": "11",
-                "pdays": "999",
-                "previous": "0",
-                "poutcome": "nonexistent",
-                "emp.var.rate": "1.4",
-                "cons.price.idx": "93.918",
-                "cons.conf.idx": "-42.7",
-                "euribor3m": "4.961",
-                "nr.employed": "5228.1"
-            },
-            {
-                "age": "24",
-                "job": "blue-ollar",
-                "marital": "married",
-                "education": "professional.course",
-                "default": "no",
-                "housing": "no",
-                "loan": "yes",
-                "contact": "cellular",
-                "month": "may",
-                "day_of_week": "tue",
-                "duration": "178",
-                "campaign": "1",
-                "pdays": "999",
-                "previous": "1",
-                "poutcome": "nonexistent",
-                "emp.var.rate": "-1.4",
-                "cons.price.idx": "93.918",
-                "cons.conf.idx": "-46.7",
-                "euribor3m": "1.961",
-                "nr.employed": "6228.1"
-            },
-        ]
-    }
+		data = {
+		    "Inputs": {
+			"data":
+			[
+			    {
+				"age": "53",
+				"job": "technician",
+				"marital": "married",
+				"education": "professional.course",
+				"default": "no",
+				"housing": "no",
+				"loan": "yes",
+				"contact": "cellular",
+				"month": "jul",
+				"day_of_week": "tue",
+				"duration": "178",
+				"campaign": "11",
+				"pdays": "999",
+				"previous": "0",
+				"poutcome": "nonexistent",
+				"emp.var.rate": "1.4",
+				"cons.price.idx": "93.918",
+				"cons.conf.idx": "-42.7",
+				"euribor3m": "4.961",
+				"nr.employed": "5228.1"
+			    },
+			    {
+				"age": "24",
+				"job": "blue-ollar",
+				"marital": "married",
+				"education": "professional.course",
+				"default": "no",
+				"housing": "no",
+				"loan": "yes",
+				"contact": "cellular",
+				"month": "may",
+				"day_of_week": "tue",
+				"duration": "178",
+				"campaign": "1",
+				"pdays": "999",
+				"previous": "1",
+				"poutcome": "nonexistent",
+				"emp.var.rate": "-1.4",
+				"cons.price.idx": "93.918",
+				"cons.conf.idx": "-46.7",
+				"euribor3m": "1.961",
+				"nr.employed": "6228.1"
+			    },
+			]
+		    }
 
 
 *Excuted: python endpoint.py
@@ -159,10 +159,9 @@ Using the data.json file that was produced from the endpoint.py run, execute bas
 
 ![benchmark](benchmark.PNG)
 
+## Step 7: Create and publish a pipeline <a name="pipeline"></a>
 
-
-
-## Screen Recording
+## Step 8: Video <a name="video"></a>
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 
 Step 7: Create, Publish and Consume a Pipeline
