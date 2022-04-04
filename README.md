@@ -28,7 +28,8 @@ In this step, I created an experiment using Automated ML, configured a compute c
 * Created Compute Cluster called automl-cluster STANDARD_DS12_V2 (Minimum 1 node)
 * Uploaded & Registered the [bankmarketing_train.csv](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)  to Azure Machine Learning Studio so that it can be used when training the model.
 #### Registered Dataset
-![Registered Dataset.(registered_dataset.PNG)	
+![Registered Dataset](registered_dataset.PNG)
+
 * Created a new AutoML experiment on the compute cluster called ml-experiment-1: using the bankmarketing dataset (target column "y") and applying Classification to find the best model
 
 #### Experiment Completed
@@ -88,8 +89,9 @@ Now that model is deployed, using the endpoint.py script provided to interact wi
 
 
 * Added two sets of data to score, will return {"result":["yes", "no"]}
+```
 
-		```data = {
+		data = {
 		    "Inputs": {
 			"data":
 			[
@@ -138,9 +140,9 @@ Now that model is deployed, using the endpoint.py script provided to interact wi
 				"nr.employed": "6228.1"
 			    },
 			]
-		    } ```
+		    } 
 
-
+```
 *Excuted: python endpoint.py
 
 #### Screenshot of the endpoint.py run against the API producing JSON output from the model): 
