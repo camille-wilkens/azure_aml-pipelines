@@ -5,8 +5,8 @@
 
 
 ## Architectural Diagram
-![az_architecture](az_architecture.PNG.PNG)
-az_architecture.PNG
+![az_architecture](az_architecture.PNG)
+
 
 ### Project Main Steps:
 
@@ -25,7 +25,7 @@ I skipped this step due to the lab Udacity provided, I was not authorized to cre
 ## Step 2: Automated ML Experiment<a name="automate"></a>
 In this step, I created an experiment using Automated ML, configured a compute cluster, and used that cluster to run the experiment.
 * Created Compute Instance called automl-inst using STANDARD_DS12_V2
-* Created Compute Cluster called automl-cluster STANDARD_DS12_V2 (minium 1 node)
+* Created Compute Cluster called automl-cluster STANDARD_DS12_V2 (Minimum 1 node)
 * Uploaded & Registered the [bankmarketing_train.csv](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)  to Azure Machine Learning Studio so that it can be used when training the model.
 #### Registered Dataset
 ![Registered Dataset.(registered_dataset.PNG)	
@@ -88,7 +88,8 @@ Now that model is deployed, using the endpoint.py script provided to interact wi
 
 
 * Added two sets of data to score, will return {"result":["yes", "no"]}
-		data = {
+
+		```data = {
 		    "Inputs": {
 			"data":
 			[
@@ -137,7 +138,7 @@ Now that model is deployed, using the endpoint.py script provided to interact wi
 				"nr.employed": "6228.1"
 			    },
 			]
-		    }
+		    } ```
 
 
 *Excuted: python endpoint.py
