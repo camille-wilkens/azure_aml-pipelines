@@ -17,7 +17,7 @@
 5. [Swagger Documentation](#swagger)
 6. [Consume model endpoints](#endpoints)
 7. [Create and publish a pipeline](#pipeline)
-8. [Video](#video)
+8. [Documentation Video](#video)
 
 ## Step 1: Authentication<a name="auth"></a>
 I skipped this step due to the lab Udacity provided, I was not authorized to create a security principal. 
@@ -25,7 +25,7 @@ I skipped this step due to the lab Udacity provided, I was not authorized to cre
 ## Step 2: Automated ML Experiment<a name="automate"></a>
 In this step, I created an experiment using Automated ML, configured a compute cluster, and used that cluster to run the experiment.
 * Created Compute Instance called automl-inst using STANDARD_DS12_V2
-* Created Compute Cluster called automl-cluster STANDARD_DS12_V2 (Minimum 1 node)
+* Created Compute Cluster called automl-cluster STANDARD_DS12_V2 (Minimum 1 node & 4 Node Max)
 * Uploaded & Registered the [bankmarketing_train.csv](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)  to Azure Machine Learning Studio so that it can be used when training the model.
 #### Registered Dataset
 ![Registered Dataset](registered_dataset.PNG)
@@ -65,7 +65,7 @@ service.update(enable_app_insights=True)
 In this step, I consumed the deployed model using Swagger. Azure provides a Swagger JSON file for deployed models. Under thee Endpoints section, and located the deployed model, it should be the first one on the list.
 
 * Download swagger.json (using save as) and placed in project directory.
-* swagger.sh will download the latest Swagger container, and will run on port 9000 (swagger.sh was updated from port 80 to 9000, 80 was already in use)
+* execute: bash swagger.sh will download the latest Swagger container, and will run on port 9000 (swagger.sh was updated from port 80 to 9000, 80 was already in use)
 * serve.py will start a Python server on port 8000. This script needs to be in the same directory as the newly downloaded swagger.json file. NOTE: This will not work if swagger.json is not on the same directory
 
 * Executed: python serve.py
@@ -162,10 +162,7 @@ Using the data.json file that was produced from the endpoint.py run, execute bas
 
 ![benchmark](benchmark.PNG)
 
-## Step 7: Create and publish a pipeline <a name="pipeline"></a>
 
-## Step 8: Video <a name="video"></a>
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
 
 Step 7: Create, Publish and Consume a Pipeline
 For this part of the project, I used the Jupyter Notebook provided in the starter files. I updated the notebook to have the same keys, URI, dataset, cluster, and model names already created. 
@@ -178,3 +175,8 @@ For this part of the project, I used the Jupyter Notebook provided in the starte
 ![pipeline_created](pipeline_created.PNG)
 * Verified that the pipeline was scheduled and ran
 ![pipeline_endpoint](pipeline_endpoint.PNG)
+
+
+## Step 8: Documentation Video <a name="video"></a>
+[YouTube Video](https://https://www.youtube.com/watch?v=IhvJeH_FfC0)
+https://www.youtube.com/watch?v=IhvJeH_FfC0
