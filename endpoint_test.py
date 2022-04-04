@@ -13,9 +13,9 @@ allowSelfSignedHttps(True) # this line is needed if you use self-signed certific
 
 # URL for the web service, should be similar to:
 # 'http://8530a665-66f3-49c8-a953-b82a2d312917.eastus.azurecontainer.io/score'
-scoring_uri = 'http://0bdf4fd2-9f7b-41cc-bcf8-869a5a570f58.southcentralus.azurecontainer.io/score'
+scoring_uri = 'http://b9cf3749-154a-464c-912e-c3a88f8409a6.southcentralus.azurecontainer.io/score'
 # If the service is authenticated, set the key or token
-key = 'sxbz2PbvmE3Df9YjSm7haRAWO04SZ20q'
+key = 'YXl253qjvEEXHhIfRvc18FUmcerc68SA'
 
 
 
