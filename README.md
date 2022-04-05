@@ -18,6 +18,7 @@
 6. [Consume model endpoints](#endpoints)
 7. [Create and publish a pipeline](#pipeline)
 8. [Documentation Video](#video)
+9. [Future Improvements](#future)
 
 ## Step 1: Authentication<a name="auth"></a>
 I skipped this step due to the lab Udacity provided, I was not authorized to create a security principal. 
@@ -33,7 +34,7 @@ In this step, I created an experiment using Automated ML, configured a compute c
 * Created a new AutoML experiment on the compute cluster called ml-experiment-a: using the bankmarketing dataset (target column "y") and applying Classification to find the best model
 
 #### Experiment Completed
-![Experiment Completed(experiment_complete.PNG)
+![Experiment Completed](experiment_complete.PNG)
 
 #### Best Model Summary (VotingEnsemble): 
 ![Best Model Summary](best_model_summary.PNG)
@@ -77,7 +78,7 @@ In this step, I consumed the deployed model using Swagger. Azure provides a Swag
 
 ![swagger](swagger_api_contents.PNG)
 
-![swagger](swagger_response.PNG)
+![swagger](swagger_resonse.PNG)
 
 ## Step 6: Consume model endpoints <a name="endpoints"></a>
 Now that model is deployed, used the endpoint.py script provided to interact with the trained model. 
@@ -164,7 +165,8 @@ replaced http://REPLACE_WITH_API_URL/score with the REST endpoint URI from the d
 
 
 
-Step 7: Create, Publish and Consume a Pipeline<a name="pipeline"></a>
+## Step 7: Create, Publish and Consume a Pipeline<a name="pipeline"></a>
+
 For this part of the project, I used the Jupyter Notebook provided in the starter files. I updated the notebook to have the same keys, URI, dataset, cluster, and model names already created. 
 
 * Uploaded the Jupyter Notebook - aml-pipelines-with-automated-machine-learning-step.ipynb to the Azure ML studio
@@ -172,7 +174,7 @@ For this part of the project, I used the Jupyter Notebook provided in the starte
 * Validated the config.json file has been downloaded in the project working directory
 * Ran each cell
 * Verified the pipeline was created and shows in Azure ML Studio (pipelines section)
-![pipeline_created](publish_pipline.PNG)
+![pipeline_created](publish_pipeline.PNG)
 * Verified that the pipeline was scheduled and ran
 ![pipeline_endpoint](pipeline_endpoint.PNG)
 * Bankmarketing Dataset with the AutoML module
@@ -192,4 +194,4 @@ https://www.youtube.com/watch?v=IhvJeH_FfC0
 
 ## Step 9: Future Improvements<a name="future"></a>
 
-Auto ML alerted to Class balancing detection and changing the accuary metric to another type could address the imbalanced data.  Adding data to ensure each class has a good representation in the dataset, measureed by the number and ration of samples could address this issue as well.
+AutoML alerted to Class balancing detection and changing the accuary metric to another type could address the imbalanced data.  Adding data to ensure each class has a good representation in the dataset, measured by the number and ratio of samples could address this issue as well.
