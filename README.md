@@ -30,10 +30,10 @@ In this step, I created an experiment using Automated ML, configured a compute c
 #### Registered Dataset
 ![Registered Dataset](registered_dataset.PNG)
 
-* Created a new AutoML experiment on the compute cluster called ml-experiment-1: using the bankmarketing dataset (target column "y") and applying Classification to find the best model
+* Created a new AutoML experiment on the compute cluster called ml-experiment-a: using the bankmarketing dataset (target column "y") and applying Classification to find the best model
 
 #### Experiment Completed
-![Experiment Completed.(experiment_complete.PNG)
+![Experiment Completed(experiment_complete.PNG)
 
 #### Best Model Summary (VotingEnsemble): 
 ![Best Model Summary](best_model_summary.PNG)
@@ -49,43 +49,40 @@ After the experiment run completes, a summary of all the models and their metric
 Now that the Best Model is deployed, enabled Application Insights and retrieved logs.
 * Downloaded the config.json file from the top left menu in the Azure portal and placed in project folder directory
 * Using Git Bash, ensured az & ab are available, changed directory to location of project files including the downloaded config.json file
-
 * Updated logs.py file to include:
-# Set with the deployment name
-name = "demo-model-deploy"
-service.update(enable_app_insights=True)
+```
+		# Set with the deployment name
+		name = "demo-model-deploy"
+		service.update(enable_app_insights=True)
+```
 
 * Executed: python logs.py 
-![Running Logs.py](running_logs.PNG)
-
+![Running Logs.py](Running_Logs.PNG)
 * Application Insights Enabled
 ![Application Insights](app_insight.PNG)
 
 ## Step 5: Swagger Documentation<a name="swagger"></a>
-In this step, I consumed the deployed model using Swagger. Azure provides a Swagger JSON file for deployed models. Under thee Endpoints section, and located the deployed model, it should be the first one on the list.
+In this step, I consumed the deployed model using Swagger. Azure provides a Swagger JSON file for deployed models. Under the Endpoints section, located the deployed model, it should be the first one on the list.
 
 * Download swagger.json (using save as) and placed in project directory.
-* execute: bash swagger.sh will download the latest Swagger container, and will run on port 9000 (swagger.sh was updated from port 80 to 9000, 80 was already in use)
-* serve.py will start a Python server on port 8000. This script needs to be in the same directory as the newly downloaded swagger.json file. NOTE: This will not work if swagger.json is not on the same directory
-
-* Executed: python serve.py
-* In new Git Bash window, excuted: python serve.py in the project directory folder
+* Download the latest Swagger container, and run on port 9000 by executing: bash swagger.sh (swagger.sh was updated from port 80 to 9000, 80 was already in use)
+* Execute: python serve.py which will start a Python server on port 8000. This script needs to be in the same directory as the newly downloaded swagger.json file. NOTE: This will not work if swagger.json is not on the same directory
+* Execute: python serve.py
+* In new Git Bash window, excute: python serve.py in the project directory folder
 * In a new browser, launched http:localhost:9000
 * In the Swagger instance, typed http://localhost:8000/swagger.json to interact with the swagger documentation for the deployed model - demo-model-deploy
 
-#### demo-model-deploy Swagger Documentation(contents): 
+#### demo-model-deploy Swagger Documentation, HTTP API Methods, and responses for the model 
 ![swagger](swagger_contents.PNG)
 
-#### demo-model-deploy API(contents): 
-![swagger](swagger_contents.PNG)
+![swagger](swagger_api_contents.PNG)
 
-#### HTTP API Methods and Responses: 
 ![swagger](swagger_response.PNG)
 
 ## Step 6: Consume model endpoints <a name="endpoints"></a>
-Now that model is deployed, using the endpoint.py script provided to interact with the trained model. 
+Now that model is deployed, used the endpoint.py script provided to interact with the trained model. 
 
-*In this step, I modified both the scoring_uri and the key to match the key for my service and the URI that was generated after deployment in the endpoint.py file.  Scoring_uri is from the Endpoints  deployed model Basic Consumption info section (REST endpoint uri) and key is from the Authentication section (primary key)
+* In this step, I modified both the scoring_uri and the key to match the key for my service and the URI that was generated after deployment in the endpoint.py file.  Scoring_uri is from the Endpoints deployed model Basic Consumption info section (REST endpoint uri) and key is from the Authentication section (primary key)
 
 
 * Added two sets of data to score, will return {"result":["yes", "no"]}
@@ -150,13 +147,16 @@ Now that model is deployed, using the endpoint.py script provided to interact wi
 
 #### Load-Tested the Model
 
-* Update the benchmark.sh file 
- ab -n 10 -v 4 -p data.json -T 'application/json' -H 'Authorization: Bearer REPLACE_WITH_KEY' http://REPLACE_WITH_API_URL/score
+* Updated the benchmark.sh file 
+ ```
+ 	ab -n 10 -v 4 -p data.json -T 'application/json' -H 'Authorization: Bearer REPLACE_WITH_KEY' http://REPLACE_WITH_API_URL/score
+ 	
+ ```
 
-replace REPLACE_WITH_KEY with the key from the Authentication section (primary key) in the endpoint deployed model tab 
-replace http://REPLACE_WITH_API_URL/score with the REST endpoint URI from the deployed model Basic Consumption info section in the endpoint deployed model tab
+* Replaced REPLACE_WITH_KEY with the key from the Authentication section (primary key) in the endpoint deployed model tab 
+replaced http://REPLACE_WITH_API_URL/score with the REST endpoint URI from the deployed model Basic Consumption info section in the endpoint deployed model tab
 
-Using the data.json file that was produced from the endpoint.py run, execute bash benchmark.sh
+* Using the data.json file that was produced from the endpoint.py run, executed bash benchmark.sh
 
 #### Screenshot benchmark.sh Run
 
@@ -164,7 +164,7 @@ Using the data.json file that was produced from the endpoint.py run, execute bas
 
 
 
-Step 7: Create, Publish and Consume a Pipeline
+Step 7: Create, Publish and Consume a Pipeline<a name="pipeline"></a>
 For this part of the project, I used the Jupyter Notebook provided in the starter files. I updated the notebook to have the same keys, URI, dataset, cluster, and model names already created. 
 
 * Uploaded the Jupyter Notebook - aml-pipelines-with-automated-machine-learning-step.ipynb to the Azure ML studio
@@ -172,11 +172,24 @@ For this part of the project, I used the Jupyter Notebook provided in the starte
 * Validated the config.json file has been downloaded in the project working directory
 * Ran each cell
 * Verified the pipeline was created and shows in Azure ML Studio (pipelines section)
-![pipeline_created](pipeline_created.PNG)
+![pipeline_created](publish_pipline.PNG)
 * Verified that the pipeline was scheduled and ran
 ![pipeline_endpoint](pipeline_endpoint.PNG)
+* Bankmarketing Dataset with the AutoML module
+![pipeline_endpoint](automl-Bankingdataset.PNG)
+* Jupyter Notebook, Run Details Widget
+![pipeline_endpoint](jupyter_widget.PNG)
+* ML Studio, Scheduled Run
+![pipeline_endpoint](scheduled_run.PNG)
 
+![pipeline_endpoint](published+active_pipeline.PNG)
+![pipeline_endpoint](published_best_mode.PNG)
+![pipeline_endpoint](publish.PNG)
 
 ## Step 8: Documentation Video <a name="video"></a>
 [YouTube Video](https://https://www.youtube.com/watch?v=IhvJeH_FfC0)
 https://www.youtube.com/watch?v=IhvJeH_FfC0
+
+## Step 9: Future Improvements<a name="future"></a>
+
+Auto ML alerted to Class balancing detection and changing the accuary metric to another type could address the imbalanced data.  Adding data to ensure each class has a good representation in the dataset, measureed by the number and ration of samples could address this issue as well.
